@@ -38,7 +38,7 @@ final class AddFeedConfirmViewController: UITableViewController {
 }
 
 extension AddFeedConfirmViewController: AddFeedConfirmNavigator {
-    func done() {
+    func completed() {
         dismiss(animated: true)
     }
 }

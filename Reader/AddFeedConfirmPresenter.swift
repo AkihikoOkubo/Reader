@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol AddFeedConfirmNavigator: class {
-    func done()
+    func completed()
 }
 
 final class AddFeedConfirmPresenter {
@@ -40,7 +40,7 @@ final class AddFeedConfirmPresenter {
         usecase.state.asObservable()
             .subscribe(onNext: { [weak navigator] state in
                 if state == .completed {
-                    navigator?.done()
+                    navigator?.completed()
                 }
             })
             .addDisposableTo(bag)
