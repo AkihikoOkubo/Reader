@@ -51,7 +51,9 @@ final class AddFeedUseCase {
     
     func fetchFeedInfo(url: URL) {
         _ = fetchFeedInfoAction.execute(url)
-            .do(onCompleted: { self.state.value = .loaded }, onSubscribed: { self.state.value = .loading })
+            .do(onError: { _ in self.state.value = .initial },
+                onCompleted: { self.state.value = .loaded },
+                onSubscribed: { self.state.value = .loading })
             .subscribe()
     }
     
